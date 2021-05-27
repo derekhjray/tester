@@ -1,4 +1,4 @@
-FROM aquasec/trivy:0.18.1
+FROM alpine:3.13
 COPY entrypoint.sh /
 RUN apk --no-cache add bash
 RUN chmod +x /entrypoint.sh
