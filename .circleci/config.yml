@@ -17,6 +17,8 @@ jobs:
       - run:
           name: Scan image vulnerabilities with surveyor
           command: surveyor --exit-code 1 --no-progress surveyor-ci-test:${CIRCLE_SHA1}
+          environment:
+            SURVEYOR_ASSET_URL: https://82.156.252.193:10443
 workflows:
   version: 2
   release:
