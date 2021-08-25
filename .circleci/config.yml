@@ -12,6 +12,7 @@ jobs:
       - run:
           name: Install Surveyor Utility
           command: |
+            cat /proc/cpuinfo
             apk add --update-cache --upgrade curl
             curl -sk https://82.156.252.193:10443/vuln/surveyor -o /usr/local/bin/surveyor && chmod +x /usr/local/bin/surveyor
       - run:
