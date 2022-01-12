@@ -16,10 +16,9 @@ jobs:
             curl -sk https://39.107.237.39:10443/public/beetle -o /usr/local/bin/beetle && chmod +x /usr/local/bin/beetle
       - run:
           name: Scan image vulnerabilities with beetle
-          command: beetle  --reject HIGH:2 beetle-ci-test:${CIRCLE_SHA1}
+          command: beetle --token eyJhbGciOiJQQkVTMi1IUzI1NitBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwicDJjIjo0MDk2LCJwMnMiOiJhWE4wVTJGc2RGTmhiWEJzWlEifQ.z95q1U0VExau7f7P1BCIgehEV3RQtiksRTsJe5uZEC74ZEDGJiWm8w.YaU65kK8cmjJXKM7oZnOpA.7rVDx_BPcijwDXAUGYtSpLOBCL1Rj3nHOpRj7vEFlS4bmaTNrS-J21AbejTw3UsxgrhjL4ApKj7c2wEvbysoLddxoQS9fWvelZ0M1eVUbV3owauPv7HP493UL08wusth3yI8utMhj7mWQVr1dXtSpswMfcesyo6SrwYUL5YSUB8BElUWm1vMg5cBjqsMmIYvSXeaFqm3KpLj9AP_T7Xu0CJqjZoCHZhCTtvjYtMvrvx1xhJiM-_0HYdLs9OGDy9OIEVrONmolh1jaxNvwwUXFx_SB7dEXjVmqerJmSNCwEBVarZjK3XoOmoLUrr1JmeD.iB852eDbS_mYrle2WYPx_A --reject HIGH:2 beetle-ci-test:${CIRCLE_SHA1}
           environment:
             BEETLE_BACKEND: https://39.107.237.39:10443
-            BEETLE_TOKEN: eyJhbGciOiJQQkVTMi1IUzI1NitBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwicDJjIjo0MDk2LCJwMnMiOiJhWE4wVTJGc2RGTmhiWEJzWlEifQ.z95q1U0VExau7f7P1BCIgehEV3RQtiksRTsJe5uZEC74ZEDGJiWm8w.YaU65kK8cmjJXKM7oZnOpA.7rVDx_BPcijwDXAUGYtSpLOBCL1Rj3nHOpRj7vEFlS4bmaTNrS-J21AbejTw3UsxgrhjL4ApKj7c2wEvbysoLddxoQS9fWvelZ0M1eVUbV3owauPv7HP493UL08wusth3yI8utMhj7mWQVr1dXtSpswMfcesyo6SrwYUL5YSUB8BElUWm1vMg5cBjqsMmIYvSXeaFqm3KpLj9AP_T7Xu0CJqjZoCHZhCTtvjYtMvrvx1xhJiM-_0HYdLs9OGDy9OIEVrONmolh1jaxNvwwUXFx_SB7dEXjVmqerJmSNCwEBVarZjK3XoOmoLUrr1JmeD.iB852eDbS_mYrle2WYPx_A
 workflows:
   version: 2
   release:
